@@ -1,0 +1,110 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+
+const materials = [
+  'HR, Cold Rolled y Hot Rolled',
+  'Acero inoxidable',
+  'Aluminio',
+  'Alfajor',
+];
+
+const applications = [
+  'Piezas rectas bajo plano',
+  'Preparacion de componentes para carrocerias',
+  'Trazos para tolvas, ductos y canales',
+  'Guardas, cubiertas y piezas de reposicion',
+];
+
+const advantages = [
+  {
+    title: 'Corte limpio y funcional',
+    description: 'Ideal para piezas que necesitan preparacion precisa antes de doblado, ensamble o montaje.',
+  },
+  {
+    title: 'Respuesta comercial agil',
+    description: 'Cotizamos en menos de 24 horas cuando el requerimiento llega con plano, medidas o referencia.',
+  },
+  {
+    title: 'Capacidad para continuidad operativa',
+    description: 'Atendemos piezas de reposicion y desarrollos urgentes para no frenar operaciones del cliente.',
+  },
+];
+---
+
+<MainLayout
+  title="Corte CNC de lamina en Santander | MG"
+  description="Servicio de corte CNC de lamina en Santander para piezas bajo plano, carrocerias, ductos, tolvas, guardas y desarrollos metalicos a medida."
+>
+  <section class="relative overflow-hidden pt-32 pb-18">
+    <div class="absolute inset-x-0 top-0 -z-10 h-[30rem] bg-[radial-gradient(circle_at_top_right,rgba(0,49,84,0.18),transparent_30%),linear-gradient(180deg,#fdfbf8_0%,#f1ece3_100%)] dark:bg-[radial-gradient(circle_at_top_right,rgba(25,124,177,0.18),transparent_25%),linear-gradient(180deg,#071624_0%,#0b1d2d_100%)]"></div>
+    <div class="section-shell grid gap-10 lg:grid-cols-[1fr_0.95fr]">
+      <div class="space-y-6">
+        <span class="eyebrow">Servicio de corte</span>
+        <h1 class="section-title max-w-4xl">Corte CNC de lamina en Santander para piezas listas para seguir a produccion</h1>
+        <p class="section-copy">
+          Cortamos lamina para piezas bajo plano, componentes automotor, desarrollos agroindustriales y requerimientos de mantenimiento que necesitan medidas claras, tiempos cortos y respuesta tecnica agil.
+        </p>
+        <div class="flex flex-col gap-4 sm:flex-row">
+          <a href="/cotizar" class="button-primary">Solicitar cotizacion</a>
+          <a href="https://wa.me/573177617494?text=Hola%20MG,%20quiero%20cotizar%20corte%20de%20lamina." class="button-secondary">Enviar requerimiento por WhatsApp</a>
+        </div>
+      </div>
+      <div class="panel p-7">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-brand-secondary)]">Capacidad base</p>
+        <div class="mt-5 grid gap-4 sm:grid-cols-2">
+          <div class="rounded-[1.2rem] bg-[var(--color-brand-primary)] p-5 text-white">
+            <p class="text-sm text-white/72">Espesor</p>
+            <h2 class="mt-2 text-3xl font-semibold">Hasta 6 mm</h2>
+          </div>
+          <div class="rounded-[1.2rem] border border-[var(--color-border)] bg-white/70 p-5 dark:bg-white/4">
+            <p class="text-sm text-[var(--color-text-muted)]">Longitud maxima</p>
+            <h2 class="mt-2 text-3xl font-semibold text-[var(--color-brand-primary)]">3 metros</h2>
+          </div>
+        </div>
+        <p class="mt-5 text-sm text-[var(--color-text-muted)]">
+          Servicio orientado a fabricacion metalica a medida, piezas de reposicion y preparacion de desarrollos para ensamble o doblez posterior.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="section-shell grid gap-6 md:grid-cols-2">
+      <article class="panel p-7">
+        <span class="eyebrow">Materiales</span>
+        <ul class="mt-5 space-y-3 text-sm text-[var(--color-text-muted)]">
+          {materials.map((material) => <li>{material}</li>)}
+        </ul>
+      </article>
+      <article class="panel p-7">
+        <span class="eyebrow">Aplicaciones frecuentes</span>
+        <ul class="mt-5 space-y-3 text-sm text-[var(--color-text-muted)]">
+          {applications.map((application) => <li>{application}</li>)}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="section-shell space-y-8">
+      <div class="space-y-4">
+        <span class="eyebrow">Por que este servicio</span>
+        <h2 class="section-title">Corte pensado para piezas que deben encajar bien desde el inicio</h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-3">
+        {advantages.map((advantage) => (
+          <article class="panel p-7">
+            <h3 class="text-2xl font-semibold text-[var(--color-brand-primary)]">{advantage.title}</h3>
+            <p class="mt-4 text-sm text-[var(--color-text-muted)]">{advantage.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <QuoteForm
+    title="Solicita cotizacion para corte de lamina"
+    intro="Comparte material, espesor, cantidades y el tipo de pieza o trabajo que necesitas. Si tienes plano o referencia, preparalo para enviarlo al abrir WhatsApp."
+  />
+</MainLayout>

@@ -1,0 +1,97 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+
+const useCases = [
+  'Repuestos metalicos a medida',
+  'Piezas unicas o series cortas',
+  'Reposiciones para mantenimiento industrial',
+  'Desarrollos para carrocerias, ductos o gabinetes',
+];
+
+const processPoints = [
+  'Revision del plano o referencia',
+  'Validacion tecnica y de material',
+  'Definicion del proceso de corte, doblez o ambos',
+  'Respuesta comercial orientada a viabilidad y tiempos',
+];
+---
+
+<MainLayout
+  title="Piezas metalicas bajo plano en Santander | MG"
+  description="Fabricamos piezas metalicas bajo plano en Santander con corte y doblado CNC para mantenimiento, agroindustria, carrocerias y desarrollos a medida."
+>
+  <section class="relative overflow-hidden pt-32 pb-18">
+    <div class="absolute inset-x-0 top-0 -z-10 h-[30rem] bg-[radial-gradient(circle_at_top_right,rgba(0,49,84,0.18),transparent_30%),linear-gradient(180deg,#fdfbf8_0%,#f1ece3_100%)] dark:bg-[radial-gradient(circle_at_top_right,rgba(25,124,177,0.20),transparent_25%),linear-gradient(180deg,#071624_0%,#0b1d2d_100%)]"></div>
+    <div class="section-shell grid gap-10 lg:grid-cols-[1fr_0.95fr]">
+      <div class="space-y-6">
+        <span class="eyebrow">Fabricacion bajo plano</span>
+        <h1 class="section-title max-w-4xl">Piezas metalicas bajo plano para reposicion, montaje o desarrollo a medida</h1>
+        <p class="section-copy">
+          Si necesitas fabricar una pieza especifica segun plano, muestra o referencia, MG te ayuda a revisar viabilidad, material, proceso y tiempos para responder con claridad y criterio tecnico.
+        </p>
+        <div class="flex flex-col gap-4 sm:flex-row">
+          <a href="/cotizar" class="button-primary">Solicitar cotizacion</a>
+          <a href="https://wa.me/573177617494?text=Hola%20MG,%20quiero%20cotizar%20una%20pieza%20metalica%20bajo%20plano." class="button-secondary">Enviar plano por WhatsApp</a>
+        </div>
+      </div>
+      <div class="panel p-7">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-brand-secondary)]">Para quien aplica mejor</p>
+        <div class="mt-5 space-y-4">
+          <div class="rounded-[1.2rem] bg-[var(--color-brand-primary)] p-5 text-white">
+            <h2 class="text-2xl font-semibold">Mantenimiento industrial</h2>
+            <p class="mt-2 text-sm text-white/76">Reposiciones y piezas urgentes para continuidad operativa.</p>
+          </div>
+          <div class="rounded-[1.2rem] border border-[var(--color-border)] bg-white/70 p-5 dark:bg-white/4">
+            <h2 class="text-2xl font-semibold text-[var(--color-brand-primary)]">Desarrollos a medida</h2>
+            <p class="mt-2 text-sm text-[var(--color-text-muted)]">Piezas especiales para carrocerias, agroindustria, guardas, soportes y otras aplicaciones.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="section-shell grid gap-6 md:grid-cols-2">
+      <article class="panel p-7">
+        <span class="eyebrow">Usos frecuentes</span>
+        <ul class="mt-5 space-y-3 text-sm text-[var(--color-text-muted)]">
+          {useCases.map((useCase) => <li>{useCase}</li>)}
+        </ul>
+      </article>
+      <article class="panel p-7">
+        <span class="eyebrow">Como lo abordamos</span>
+        <ul class="mt-5 space-y-3 text-sm text-[var(--color-text-muted)]">
+          {processPoints.map((point) => <li>{point}</li>)}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="section-shell">
+      <div class="panel p-8">
+        <span class="eyebrow">Lo que ayuda a cotizar mejor</span>
+        <div class="mt-5 grid gap-4 md:grid-cols-3">
+          <div>
+            <h2 class="text-2xl font-semibold text-[var(--color-brand-primary)]">Plano o referencia</h2>
+            <p class="mt-3 text-sm text-[var(--color-text-muted)]">Una imagen, muestra o plano acelera la lectura tecnica del trabajo.</p>
+          </div>
+          <div>
+            <h2 class="text-2xl font-semibold text-[var(--color-brand-primary)]">Material y espesor</h2>
+            <p class="mt-3 text-sm text-[var(--color-text-muted)]">Nos permite estimar mejor el proceso y la viabilidad del desarrollo.</p>
+          </div>
+          <div>
+            <h2 class="text-2xl font-semibold text-[var(--color-brand-primary)]">Cantidad y fecha requerida</h2>
+            <p class="mt-3 text-sm text-[var(--color-text-muted)]">Clave para priorizar, programar y responder con tiempos mas realistas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <QuoteForm
+    title="Solicita cotizacion para piezas metalicas bajo plano"
+    intro="Comparte el mayor detalle posible del requerimiento para ayudarte a validar el proceso y responder con una cotizacion mas util."
+  />
+</MainLayout>

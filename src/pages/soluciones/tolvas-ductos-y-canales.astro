@@ -1,0 +1,99 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+
+const items = [
+  'Tolvas y embudos para manejo de granos',
+  'Canales y ductos de conduccion',
+  'Bandejas recolectoras',
+  'Transportadores y soportes metalicos',
+  'Cubiertas y piezas complementarias',
+];
+
+const strengths = [
+  {
+    title: 'Adaptacion a medidas reales',
+    description: 'Desarrollos segun requerimiento, material y contexto operativo del cliente.',
+  },
+  {
+    title: 'Trabajo funcional para agroindustria',
+    description: 'Pensado para operaciones donde el flujo de material, la resistencia y el montaje importan.',
+  },
+  {
+    title: 'Integracion con corte y doblez',
+    description: 'La combinacion de ambos procesos permite fabricar piezas que responden mejor al uso final.',
+  },
+];
+---
+
+<MainLayout
+  title="Tolvas, ductos y canales metalicos | MG"
+  description="Fabricamos tolvas, ductos y canales metalicos en Santander para agroindustria, mantenimiento y procesos productivos con corte y doblado CNC."
+>
+  <section class="relative overflow-hidden pt-32 pb-18">
+    <div class="absolute inset-x-0 top-0 -z-10 h-[30rem] bg-[radial-gradient(circle_at_top_left,rgba(25,124,177,0.18),transparent_30%),linear-gradient(180deg,#fdfbf8_0%,#f1ece3_100%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(25,124,177,0.20),transparent_25%),linear-gradient(180deg,#071624_0%,#0b1d2d_100%)]"></div>
+    <div class="section-shell grid gap-10 lg:grid-cols-[1fr_0.95fr]">
+      <div class="space-y-6">
+        <span class="eyebrow">Solucion agroindustrial</span>
+        <h1 class="section-title max-w-4xl">Tolvas, ductos y canales metalicos para procesos que necesitan resistencia y funcionalidad</h1>
+        <p class="section-copy">
+          Fabricamos soluciones metalicas para conduccion, manejo y soporte de material en agroindustria y operaciones productivas que necesitan piezas bien resueltas, a medida y con respuesta agil.
+        </p>
+        <div class="flex flex-col gap-4 sm:flex-row">
+          <a href="/cotizar" class="button-primary">Solicitar cotizacion</a>
+          <a href="https://wa.me/573177617494?text=Hola%20MG,%20quiero%20cotizar%20tolvas,%20ductos%20o%20canales." class="button-secondary">Enviar requerimiento por WhatsApp</a>
+        </div>
+      </div>
+      <div class="panel p-7">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-brand-secondary)]">Aplicacion principal</p>
+        <div class="mt-5 rounded-[1.2rem] bg-[var(--color-brand-primary)] p-6 text-white">
+          <h2 class="text-2xl font-semibold">Agroindustria y procesos</h2>
+          <p class="mt-3 text-sm text-white/76">
+            Ideal para operaciones donde se requiere conducir, descargar, almacenar o proteger material con piezas funcionales y resistentes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="section-shell grid gap-6 md:grid-cols-2">
+      <article class="panel p-7">
+        <span class="eyebrow">Tipos de desarrollos</span>
+        <ul class="mt-5 space-y-3 text-sm text-[var(--color-text-muted)]">
+          {items.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+      <article class="panel p-7">
+        <span class="eyebrow">Capacidad tecnica relacionada</span>
+        <div class="mt-5 space-y-3 text-sm text-[var(--color-text-muted)]">
+          <p>Corte desde calibre 24 hasta 6 mm para piezas base y desarrollos.</p>
+          <p>Doblado desde 1.5 mm hasta 12 mm para conformados funcionales.</p>
+          <p>Trabajo en materiales como HR, inoxidable, aluminio y otros segun requerimiento.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="section-shell space-y-8">
+      <div class="space-y-4">
+        <span class="eyebrow">Valor de la solucion</span>
+        <h2 class="section-title">Una solucion pensada para adaptarse a flujo, montaje y contexto operativo</h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-3">
+        {strengths.map((strength) => (
+          <article class="panel p-7">
+            <h3 class="text-2xl font-semibold text-[var(--color-brand-primary)]">{strength.title}</h3>
+            <p class="mt-4 text-sm text-[var(--color-text-muted)]">{strength.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <QuoteForm
+    title="Solicita cotizacion para tolvas, ductos o canales"
+    intro="Comparte medidas, material, cantidad y uso final del desarrollo para ayudarte a definir una cotizacion tecnica clara."
+  />
+</MainLayout>

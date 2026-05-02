@@ -1,0 +1,24 @@
+---
+const phone = import.meta.env.PUBLIC_WHATSAPP_PHONE;
+---
+
+<a 
+  href={`https://wa.me/${phone}?text=Hola%20MG,%20necesito%20cotizar%20una%20pieza%20metálica.`} 
+  target="_blank" 
+  rel="noopener noreferrer"
+  class="whatsapp-float fixed bottom-8 right-8 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl transition-all hover:scale-110 active:scale-95"
+  aria-label="Contactar por WhatsApp"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+  
+  <span class="absolute -top-1 -right-1 flex h-4 w-4">
+    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+    <span class="relative inline-flex rounded-full h-4 w-4 bg-[var(--color-brand-secondary)]"></span>
+  </span>
+</a>
+
+<style>
+  .whatsapp-float {
+    box-shadow: 0 8px 32px rgba(37, 211, 102, 0.4);
+  }
+</style>

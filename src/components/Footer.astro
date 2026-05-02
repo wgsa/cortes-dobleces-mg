@@ -1,0 +1,39 @@
+---
+import logoWhite from '../assets/images/logo-brand-white.png';
+const currentYear = new Date().getFullYear();
+---
+<footer class="mt-20 bg-[var(--color-brand-primary)] text-white">
+  <div class="section-shell grid gap-12 py-16 md:grid-cols-[1.25fr_0.9fr_0.9fr]">
+    <div class="space-y-5">
+      <img src={logoWhite.src} alt="MG Cortes & Dobleces" class="h-20 w-auto" />
+      <p class="max-w-md text-sm leading-7 text-white/72">
+        Fabricamos piezas y soluciones metalicas a medida con corte y doblado CNC para automotor, agroindustria, mantenimiento industrial y construccion en Giron, Bucaramanga y Santander.
+      </p>
+      <a href="/cotizar" class="button-secondary border-white/30 bg-white/8 text-white hover:bg-white/16">Solicitar cotizacion</a>
+    </div>
+
+    <div class="space-y-4">
+      <h4 class="text-lg font-semibold">Navegacion</h4>
+      <ul class="space-y-3 text-sm text-white/72">
+        <li><a href="/#soluciones" class="transition-colors hover:text-white">Soluciones</a></li>
+        <li><a href="/#sectores" class="transition-colors hover:text-white">Sectores</a></li>
+        <li><a href="/#capacidades" class="transition-colors hover:text-white">Capacidades tecnicas</a></li>
+        <li><a href="/#proceso" class="transition-colors hover:text-white">Proceso de trabajo</a></li>
+        <li><a href="/cotizar" class="transition-colors hover:text-white">Cotizar</a></li>
+      </ul>
+    </div>
+
+    <div class="space-y-4">
+      <h4 class="text-lg font-semibold">Contacto</h4>
+      <div class="space-y-3 text-sm text-white/72">
+        <p>Cra 16C # 60 - 50, La Esmeralda, Giron - Colombia</p>
+        <p>317 761 7494 / 304 531 1171</p>
+        <p>facturacion@cortesydoblecesmg.com</p>
+        <p>Atencion para cotizaciones, desarrollos bajo plano y requerimientos urgentes.</p>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-white/10 py-6 text-center text-sm text-white/60">
+    <p>&copy; {currentYear} MG Cortes & Dobleces. Todos los derechos reservados.</p>
+  </div>
+</footer>

@@ -1,0 +1,45 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+
+const quickPoints = [
+  'Cotizacion tecnica en menos de 24 horas',
+  'Atencion para desarrollos bajo plano',
+  'Respuesta a urgencias y continuidad operativa',
+  'Cobertura en Giron, Bucaramanga y Santander',
+];
+---
+
+<MainLayout
+  title="Cotizar proyecto metalmecanico | MG Cortes & Dobleces"
+  description="Solicita tu cotizacion tecnica con MG. Fabricamos piezas metalicas a medida, defensas, bigotes, tolvas, ductos y desarrollos bajo plano en Santander."
+>
+  <section class="relative overflow-hidden pt-32 pb-18">
+    <div class="absolute inset-x-0 top-0 -z-10 h-[28rem] bg-[radial-gradient(circle_at_top_left,rgba(25,124,177,0.18),transparent_30%),linear-gradient(180deg,#fdfbf8_0%,#f1ece3_100%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(25,124,177,0.22),transparent_30%),linear-gradient(180deg,#071624_0%,#0b1d2d_100%)]"></div>
+    <div class="section-shell grid gap-10 lg:grid-cols-[1fr_0.95fr]">
+      <div class="space-y-6">
+        <span class="eyebrow">Cotizacion tecnica</span>
+        <h1 class="section-title max-w-4xl">Solicita una cotizacion clara para tu requerimiento metalico</h1>
+        <p class="section-copy">
+          Si ya tienes plano, material, medidas o una referencia visual, este es el mejor punto para iniciar. Te ayudamos a aterrizar el requerimiento y responder con rapidez.
+        </p>
+      </div>
+      <div class="panel p-7">
+        <h2 class="text-2xl font-semibold text-[var(--color-brand-primary)]">Lo que mas agiliza la respuesta</h2>
+        <div class="mt-5 grid gap-4">
+          {quickPoints.map((point) => (
+            <div class="rounded-[1.2rem] border border-[var(--color-border)] bg-white/70 p-4 text-sm font-medium text-[var(--color-brand-primary)] dark:bg-white/5">
+              {point}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <QuoteForm
+    compact={true}
+    title="Cuentanos tu proyecto, pieza o urgencia y te ayudamos a cotizarlo"
+    intro="Completa la informacion mas importante del requerimiento y, si tienes plano o referencia, preparalo para compartirlo por WhatsApp o correo apenas envies la solicitud."
+  />
+</MainLayout>

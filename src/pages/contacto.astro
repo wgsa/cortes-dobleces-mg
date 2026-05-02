@@ -1,0 +1,31 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+---
+
+<MainLayout
+  title="Contacto MG Cortes & Dobleces"
+  description="Contacta a MG Cortes & Dobleces en Giron, Santander. Cotizaciones tecnicas, desarrollos metalicos bajo plano y requerimientos urgentes."
+>
+  <section class="relative overflow-hidden pt-32 pb-16">
+    <div class="section-shell grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+      <div class="space-y-6">
+        <span class="eyebrow">Contacto</span>
+        <h1 class="section-title">Hablemos de tu requerimiento metalico</h1>
+        <p class="section-copy">
+          Puedes escribirnos para cotizaciones, piezas bajo plano, desarrollos a medida o urgencias de mantenimiento industrial.
+        </p>
+        <div class="panel space-y-4 p-6">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-brand-secondary)]">Canales directos</p>
+          <div class="space-y-3 text-sm text-[var(--color-text-muted)]">
+            <p><strong class="text-[var(--color-brand-primary)]">Telefono:</strong> 317 761 7494 / 304 531 1171</p>
+            <p><strong class="text-[var(--color-brand-primary)]">Correo:</strong> facturacion@cortesydoblecesmg.com</p>
+            <p><strong class="text-[var(--color-brand-primary)]">Ubicacion:</strong> Cra 16C # 60 - 50, La Esmeralda, Giron</p>
+          </div>
+          <a href="https://wa.me/573177617494?text=Hola%20MG,%20quiero%20hacer%20una%20consulta%20sobre%20un%20requerimiento%20metalico." class="button-primary">Escribir por WhatsApp</a>
+        </div>
+      </div>
+      <QuoteForm compact={true} />
+    </div>
+  </section>
+</MainLayout>

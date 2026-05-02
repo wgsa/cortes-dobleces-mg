@@ -1,0 +1,103 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+
+const components = [
+  'Defensas metalicas',
+  'Bigotes y componentes de carroceria',
+  'Enchapes y pisos plisados',
+  'Guardabarros y guardapolvos',
+  'Cajas de herramientas y acabados especiales',
+];
+
+const reasons = [
+  {
+    title: 'Mercado validado',
+    description: 'Es la linea comercial mas fuerte de MG hoy, con experiencia real en piezas para carrocerias y trabajos repetitivos.',
+  },
+  {
+    title: 'Piezas consistentes',
+    description: 'Buscamos que el componente llegue listo para montaje, con menos ajustes y menos retrabajo en taller.',
+  },
+  {
+    title: 'Respuesta para despachos y reparaciones',
+    description: 'Pensado para operaciones que no pueden atrasar entregas, reparaciones o procesos de ensamble.',
+  },
+];
+---
+
+<MainLayout
+  title="Defensas y componentes para carrocerias | MG"
+  description="Fabricamos defensas, bigotes y componentes metalicos para carrocerias en Santander con corte y doblado CNC, rapidez y criterio tecnico."
+>
+  <section class="relative overflow-hidden pt-32 pb-18">
+    <div class="absolute inset-x-0 top-0 -z-10 h-[30rem] bg-[radial-gradient(circle_at_top_right,rgba(25,124,177,0.18),transparent_30%),linear-gradient(180deg,#fdfbf8_0%,#f1ece3_100%)] dark:bg-[radial-gradient(circle_at_top_right,rgba(25,124,177,0.20),transparent_25%),linear-gradient(180deg,#071624_0%,#0b1d2d_100%)]"></div>
+    <div class="section-shell grid gap-10 lg:grid-cols-[1fr_0.95fr]">
+      <div class="space-y-6">
+        <span class="eyebrow">Solucion automotor</span>
+        <h1 class="section-title max-w-4xl">Defensas y componentes para carrocerias fabricados con rapidez y repetibilidad</h1>
+        <p class="section-copy">
+          Fabricamos piezas y componentes metalicos para talleres y operaciones automotor que necesitan buen terminado, medidas consistentes y respuesta rapida para no frenar ensamble, reparacion o despacho.
+        </p>
+        <div class="flex flex-col gap-4 sm:flex-row">
+          <a href="/cotizar" class="button-primary">Solicitar cotizacion</a>
+          <a href="https://wa.me/573177617494?text=Hola%20MG,%20quiero%20cotizar%20defensas%20o%20componentes%20para%20carrocerias." class="button-secondary">Enviar requerimiento por WhatsApp</a>
+        </div>
+      </div>
+      <div class="panel p-7">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-brand-secondary)]">Lo que mas cuidamos</p>
+        <div class="mt-5 grid gap-4">
+          <div class="rounded-[1.2rem] bg-[var(--color-brand-primary)] p-5 text-white">
+            <h2 class="text-2xl font-semibold">Repetibilidad</h2>
+            <p class="mt-2 text-sm text-white/76">Piezas consistentes para series cortas o medianas y menos ajustes en montaje.</p>
+          </div>
+          <div class="rounded-[1.2rem] border border-[var(--color-border)] bg-white/70 p-5 dark:bg-white/4">
+            <h2 class="text-2xl font-semibold text-[var(--color-brand-primary)]">Respuesta rapida</h2>
+            <p class="mt-2 text-sm text-[var(--color-text-muted)]">Cotizacion agil y enfoque en operaciones que dependen del tiempo de entrega.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="section-shell grid gap-6 md:grid-cols-2">
+      <article class="panel p-7">
+        <span class="eyebrow">Componentes que fabricamos</span>
+        <ul class="mt-5 space-y-3 text-sm text-[var(--color-text-muted)]">
+          {components.map((component) => <li>{component}</li>)}
+        </ul>
+      </article>
+      <article class="panel p-7">
+        <span class="eyebrow">Servicios que habilitan esta solucion</span>
+        <div class="mt-5 space-y-3 text-sm text-[var(--color-text-muted)]">
+          <p>Corte CNC de lamina para preparacion de piezas y componentes.</p>
+          <p>Doblado CNC para obtener geometria, consistencia y mejor ajuste de montaje.</p>
+          <p>Revision tecnica del requerimiento antes de fabricar para reducir errores y retrabajos.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="section-shell space-y-8">
+      <div class="space-y-4">
+        <span class="eyebrow">Por que MG</span>
+        <h2 class="section-title">Una solucion pensada para talleres y empresas que trabajan contra tiempo</h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-3">
+        {reasons.map((reason) => (
+          <article class="panel p-7">
+            <h3 class="text-2xl font-semibold text-[var(--color-brand-primary)]">{reason.title}</h3>
+            <p class="mt-4 text-sm text-[var(--color-text-muted)]">{reason.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <QuoteForm
+    title="Solicita cotizacion para defensas o componentes de carroceria"
+    intro="Comparte tipo de pieza, cantidades, material y fecha requerida para ayudarte a responder con claridad y rapidez."
+  />
+</MainLayout>

@@ -1,0 +1,110 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+
+const ranges = [
+  'Doblado desde 1.5 mm hasta 12 mm',
+  'Longitud maxima de trabajo de 3.2 metros',
+  'Trabajo sobre HR, Cold Rolled, Hot Rolled, inoxidable, aluminio y alfajor',
+];
+
+const shapes = [
+  'Perfiles en L y canal U',
+  'Conos y transiciones',
+  'Omegas y formaletas',
+  'Bandejas y transportadores',
+  'Guardas, cubiertas y gabinetes',
+];
+
+const benefits = [
+  {
+    title: 'Repetibilidad para series y reposiciones',
+    description: 'Ideal para componentes que deben mantener geometria estable entre una pieza y otra.',
+  },
+  {
+    title: 'Mejor lectura del plano',
+    description: 'Revisamos viabilidad, tolerancias y secuencia para ayudar a fabricar mejor desde el inicio.',
+  },
+  {
+    title: 'Soporte para desarrollos reales',
+    description: 'Aplicado a carrocerias, agroindustria, mantenimiento industrial y estructuras funcionales.',
+  },
+];
+---
+
+<MainLayout
+  title="Doblado CNC de lamina en Santander | MG"
+  description="Servicio de doblado CNC de lamina en Santander para guardas, gabinetes, defensas, ductos, tolvas y piezas metalicas a medida."
+>
+  <section class="relative overflow-hidden pt-32 pb-18">
+    <div class="absolute inset-x-0 top-0 -z-10 h-[30rem] bg-[radial-gradient(circle_at_top_left,rgba(25,124,177,0.18),transparent_30%),linear-gradient(180deg,#fdfbf8_0%,#f1ece3_100%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(25,124,177,0.20),transparent_25%),linear-gradient(180deg,#071624_0%,#0b1d2d_100%)]"></div>
+    <div class="section-shell grid gap-10 lg:grid-cols-[1fr_0.95fr]">
+      <div class="space-y-6">
+        <span class="eyebrow">Servicio de doblado</span>
+        <h1 class="section-title max-w-4xl">Doblado CNC de lamina para piezas funcionales, repetibles y listas para montaje</h1>
+        <p class="section-copy">
+          Doblamos lamina para guardas, gabinetes, ductos, tolvas, defensas y piezas a medida que necesitan precision angular, repetibilidad y buena lectura tecnica del desarrollo.
+        </p>
+        <div class="flex flex-col gap-4 sm:flex-row">
+          <a href="/cotizar" class="button-primary">Solicitar cotizacion</a>
+          <a href="https://wa.me/573177617494?text=Hola%20MG,%20quiero%20cotizar%20doblado%20de%20lamina." class="button-secondary">Enviar requerimiento por WhatsApp</a>
+        </div>
+      </div>
+      <div class="panel p-7">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-brand-secondary)]">Capacidad base</p>
+        <div class="mt-5 grid gap-4 sm:grid-cols-2">
+          <div class="rounded-[1.2rem] bg-[var(--color-brand-primary)] p-5 text-white">
+            <p class="text-sm text-white/72">Espesor</p>
+            <h2 class="mt-2 text-3xl font-semibold">Hasta 12 mm</h2>
+          </div>
+          <div class="rounded-[1.2rem] border border-[var(--color-border)] bg-white/70 p-5 dark:bg-white/4">
+            <p class="text-sm text-[var(--color-text-muted)]">Longitud maxima</p>
+            <h2 class="mt-2 text-3xl font-semibold text-[var(--color-brand-primary)]">3.2 metros</h2>
+          </div>
+        </div>
+        <p class="mt-5 text-sm text-[var(--color-text-muted)]">
+          Servicio orientado a piezas que necesitan conformado preciso antes de ensamble, instalacion o uso directo en planta.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="section-shell grid gap-6 md:grid-cols-2">
+      <article class="panel p-7">
+        <span class="eyebrow">Rangos y materiales</span>
+        <ul class="mt-5 space-y-3 text-sm text-[var(--color-text-muted)]">
+          {ranges.map((range) => <li>{range}</li>)}
+        </ul>
+      </article>
+      <article class="panel p-7">
+        <span class="eyebrow">Conformados frecuentes</span>
+        <ul class="mt-5 space-y-3 text-sm text-[var(--color-text-muted)]">
+          {shapes.map((shape) => <li>{shape}</li>)}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="section-shell space-y-8">
+      <div class="space-y-4">
+        <span class="eyebrow">Valor del servicio</span>
+        <h2 class="section-title">Doblado orientado a menos errores, mejor ensamble y mejor continuidad</h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-3">
+        {benefits.map((benefit) => (
+          <article class="panel p-7">
+            <h3 class="text-2xl font-semibold text-[var(--color-brand-primary)]">{benefit.title}</h3>
+            <p class="mt-4 text-sm text-[var(--color-text-muted)]">{benefit.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <QuoteForm
+    title="Solicita cotizacion para doblado CNC de lamina"
+    intro="Comparte material, espesor, geometria y cantidades para ayudarte a revisar viabilidad y responder con una cotizacion clara."
+  />
+</MainLayout>

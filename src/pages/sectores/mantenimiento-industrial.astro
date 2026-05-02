@@ -1,0 +1,100 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+
+const solutions = [
+  'Guardas y protecciones industriales',
+  'Bandejas portacables',
+  'Soportes estructurales',
+  'Ductos y canalizaciones',
+  'Gabinetes metalicos y cajas de proteccion',
+  'Repuestos metalicos para maquinaria',
+];
+
+const values = [
+  {
+    title: 'Urgencias y continuidad operativa',
+    description: 'Pensado para requerimientos que no pueden esperar demasiado sin afectar la produccion.',
+  },
+  {
+    title: 'Piezas de reposicion',
+    description: 'Ayudamos a fabricar piezas que permitan recuperar operacion con mejor lectura tecnica del problema.',
+  },
+  {
+    title: 'Menos friccion para el area tecnica',
+    description: 'Buscamos responder claro para que mantenimiento pueda avanzar mas rapido con compras y ejecucion.',
+  },
+];
+---
+
+<MainLayout
+  title="Mantenimiento industrial | MG Cortes & Dobleces"
+  description="Soluciones metalicas para mantenimiento industrial en Santander. Guardas, soportes, repuestos, ductos y piezas bajo plano con respuesta agil."
+>
+  <section class="relative overflow-hidden pt-32 pb-18">
+    <div class="absolute inset-x-0 top-0 -z-10 h-[30rem] bg-[radial-gradient(circle_at_top_left,rgba(25,124,177,0.18),transparent_30%),linear-gradient(180deg,#fdfbf8_0%,#f1ece3_100%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(25,124,177,0.20),transparent_25%),linear-gradient(180deg,#071624_0%,#0b1d2d_100%)]"></div>
+    <div class="section-shell grid gap-10 lg:grid-cols-[1fr_0.95fr]">
+      <div class="space-y-6">
+        <span class="eyebrow">Sector mantenimiento industrial</span>
+        <h1 class="section-title max-w-4xl">Soluciones metalicas para mantenimiento industrial con enfoque en continuidad operativa</h1>
+        <p class="section-copy">
+          Apoyamos la reposicion de piezas, guardas, soportes y desarrollos metalicos que ayudan a reducir tiempos de parada y recuperar operacion con rapidez.
+        </p>
+        <div class="flex flex-col gap-4 sm:flex-row">
+          <a href="/cotizar" class="button-primary">Solicitar cotizacion</a>
+          <a href="https://wa.me/573177617494?text=Hola%20MG,%20tengo%20un%20requerimiento%20de%20mantenimiento%20industrial." class="button-secondary">Enviar requerimiento urgente</a>
+        </div>
+      </div>
+      <div class="panel p-7">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-brand-secondary)]">Dolor que resolvemos</p>
+        <div class="mt-5 rounded-[1.2rem] bg-[var(--color-brand-primary)] p-6 text-white">
+          <h2 class="text-2xl font-semibold">Reducir tiempos muertos por falta de piezas o protecciones</h2>
+          <p class="mt-3 text-sm text-white/76">
+            Ayudamos a responder a necesidades urgentes de planta con piezas de reposicion, guardas, soportes y fabricacion bajo plano.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="section-shell grid gap-6 md:grid-cols-2">
+      <article class="panel p-7">
+        <span class="eyebrow">Requerimientos frecuentes</span>
+        <ul class="mt-5 space-y-3 text-sm text-[var(--color-text-muted)]">
+          {solutions.map((solution) => <li>{solution}</li>)}
+        </ul>
+      </article>
+      <article class="panel p-7">
+        <span class="eyebrow">Soluciones relacionadas</span>
+        <div class="mt-5 space-y-3 text-sm text-[var(--color-text-muted)]">
+          <p><a href="/soluciones/piezas-bajo-plano" class="font-semibold text-[var(--color-brand-primary)]">Piezas metalicas bajo plano</a></p>
+          <p><a href="/servicios/corte-cnc-lamina" class="font-semibold text-[var(--color-brand-primary)]">Corte CNC de lamina</a></p>
+          <p><a href="/servicios/doblado-cnc-lamina" class="font-semibold text-[var(--color-brand-primary)]">Doblado CNC de lamina</a></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="section-shell space-y-8">
+      <div class="space-y-4">
+        <span class="eyebrow">Lo que mas valora este sector</span>
+        <h2 class="section-title">Una respuesta pensada para mantenimiento, urgencias y menor friccion operativa</h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-3">
+        {values.map((value) => (
+          <article class="panel p-7">
+            <h3 class="text-2xl font-semibold text-[var(--color-brand-primary)]">{value.title}</h3>
+            <p class="mt-4 text-sm text-[var(--color-text-muted)]">{value.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <QuoteForm
+    title="Solicita cotizacion para mantenimiento industrial"
+    intro="Comparte el tipo de pieza, la urgencia, el material y cualquier referencia disponible para ayudarte a responder con rapidez."
+  />
+</MainLayout>

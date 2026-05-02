@@ -1,0 +1,211 @@
+---
+interface Props {
+  title?: string;
+  intro?: string;
+  compact?: boolean;
+}
+
+const {
+  title = 'Cuéntanos tu requerimiento y te ayudamos a cotizarlo',
+  intro = 'Envia las especificaciones de tu proyecto y, si ya tienes plano o referencia, tenlo listo para compartirlo por WhatsApp apenas abras la conversacion.',
+  compact = false,
+} = Astro.props;
+
+const phone = import.meta.env.PUBLIC_WHATSAPP_PHONE;
+const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL;
+---
+
+<section id="cotizar" class:list={['py-24 md:py-28', compact && 'py-0']}>
+  <div class="section-shell grid items-start gap-10 lg:grid-cols-[0.84fr_1.16fr] lg:gap-14">
+    <div class="space-y-6 pt-2">
+      <span class="eyebrow">Cotización técnica</span>
+      <h2 class="section-title">{title}</h2>
+      <p class="section-copy">{intro}</p>
+      <div class="panel surface-card space-y-4 p-7">
+        <h3 class="note-title text-[var(--color-brand-secondary)] font-semibold uppercase tracking-wider text-xs">Ideal para acelerar tu cotización</h3>
+        <ul class="space-y-3.5 text-[0.98rem] text-[var(--color-text-muted)]">
+          <li class="flex items-center gap-2">
+            <span class="text-[var(--color-brand-secondary)]">✓</span>
+            <span>Tipo de pieza (Defensa, Bigote, Tolva...)</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="text-[var(--color-brand-secondary)]">✓</span>
+            <span>Material y espesor de la lámina</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="text-[var(--color-brand-secondary)]">✓</span>
+            <span>Cantidad requerida</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="text-[var(--color-brand-secondary)]">✓</span>
+            <span>Urgencia del requerimiento</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <form class="quote-form panel relative overflow-hidden grid gap-5 p-6 sm:grid-cols-2 sm:p-9 bg-white/40 dark:bg-white/5 backdrop-blur-sm">
+      <div class="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-[var(--color-brand-secondary)] to-transparent"></div>
+      
+      <label class="space-y-2">
+        <span class="field-label">Nombre completo *</span>
+        <input name="nombre" required class="field-control" placeholder="Ej: Juan Pérez" />
+      </label>
+      
+      <label class="space-y-2">
+        <span class="field-label">Empresa</span>
+        <input name="empresa" class="field-control" placeholder="Nombre de su empresa" />
+      </label>
+      
+      <label class="space-y-2">
+        <span class="field-label">Teléfono de contacto *</span>
+        <input name="telefono" required type="tel" class="field-control" placeholder="Ej: 317..." />
+      </label>
+      
+      <label class="space-y-2">
+        <span class="field-label">Tipo de pieza *</span>
+        <select name="tipo" required class="field-control">
+          <option value="">Seleccione una opción</option>
+          <option value="defensa">Defensa metálica</option>
+          <option value="bigote">Bigote / Remate</option>
+          <option value="piso">Piso metálico</option>
+          <option value="tolva">Tolva industrial</option>
+          <option value="ducto">Ducto industrial</option>
+          <option value="guarda">Guarda de seguridad</option>
+          <option value="bajo-plano">Pieza bajo plano</option>
+          <option value="otro">Otro desarrollo</option>
+        </select>
+      </label>
+      
+      <label class="space-y-2">
+        <span class="field-label">Material</span>
+        <input name="material" class="field-control" placeholder="Ej: Inoxidable, HR, CR..." />
+      </label>
+      
+      <label class="space-y-2">
+        <span class="field-label">Espesor</span>
+        <input name="espesor" class="field-control" placeholder="Ej: 3mm, 1/8, Cal 14..." />
+      </label>
+      
+      <label class="space-y-2">
+        <span class="field-label">Cantidad</span>
+        <input name="cantidad" class="field-control" placeholder="Ej: 50 unidades" />
+      </label>
+      
+      <label class="space-y-2">
+        <span class="field-label">Urgencia *</span>
+        <select name="urgencia" required class="field-control urgencia-select">
+          <option value="normal">Normal (Tiempos estándar)</option>
+          <option value="alta">Alta (Prioridad operativa)</option>
+          <option value="paro">PARO DE PLANTA (Urgencia máxima)</option>
+        </select>
+      </label>
+
+      <label class="space-y-2 sm:col-span-2">
+        <span class="field-label">¿Tiene plano o diseño?</span>
+        <div class="flex items-center gap-4 mt-2">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="radio" name="tiene_plano" value="si" class="accent-[var(--color-brand-secondary)]" />
+            <span class="text-sm">Sí, tengo plano</span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="radio" name="tiene_plano" value="no" checked class="accent-[var(--color-brand-secondary)]" />
+            <span class="text-sm">No, solo medidas/referencia</span>
+          </label>
+        </div>
+      </label>
+      
+      <label class="space-y-2 sm:col-span-2">
+        <span class="field-label">Descripción del requerimiento</span>
+        <textarea name="descripcion" rows="4" class="field-control large" placeholder="Detalles adicionales, medidas, o contexto de la pieza..."></textarea>
+      </label>
+
+      <div class="sm:col-span-2 pt-4">
+        <p class="mb-6 text-sm leading-6 text-[var(--color-text-muted)] italic">
+          * Al hacer clic en enviar, se abrirá una conversación de WhatsApp con todos los datos técnicos cargados.
+        </p>
+        <div class="flex flex-col gap-4 sm:flex-row">
+          <button type="submit" class="button-primary whatsapp-btn w-full justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+            Enviar por WhatsApp
+          </button>
+          <a href={`mailto:${contactEmail}`} class="button-secondary w-full justify-center text-center">
+            Enviar por Correo
+          </a>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script is:inline define:vars={{ phone }}>
+  document.querySelectorAll('.quote-form').forEach((form) => {
+    const urgenciaSelect = form.querySelector('.urgencia-select');
+    const whatsappBtn = form.querySelector('.whatsapp-btn');
+
+    // Lógica visual para urgencia
+    urgenciaSelect.addEventListener('change', (e) => {
+      if (e.target.value === 'alta' || e.target.value === 'paro') {
+        whatsappBtn.classList.add('pulse-highlight');
+        whatsappBtn.style.backgroundColor = '#25D366';
+        whatsappBtn.style.borderColor = '#25D366';
+      } else {
+        whatsappBtn.classList.remove('pulse-highlight');
+        whatsappBtn.style.backgroundColor = '';
+        whatsappBtn.style.borderColor = '';
+      }
+    });
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      
+      const fields = [
+        ['Nombre', data.get('nombre')],
+        ['Empresa', data.get('empresa')],
+        ['Teléfono', data.get('telefono')],
+        ['Pieza', data.get('tipo')],
+        ['Material', data.get('material')],
+        ['Espesor', data.get('espesor')],
+        ['Cantidad', data.get('cantidad')],
+        ['Urgencia', data.get('urgencia').toUpperCase()],
+        ['Tiene Plano', data.get('tiene_plano')],
+        ['Descripción', data.get('descripcion')],
+      ]
+        .filter(([, value]) => value && String(value).trim().length > 0)
+        .map(([label, value]) => `*${label}:* ${value}`);
+
+      const header = data.get('urgencia') === 'paro' 
+        ? '🚨 *URGENCIA: PARO DE PLANTA* 🚨%0A%0A' 
+        : 'Hola MG, necesito cotizar una pieza técnica:%0A%0A';
+
+      const text = header + fields.join('%0A') + 
+        '%0A%0APor favor, ayúdenme con esta cotización técnica.';
+
+      window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+    });
+  });
+</script>
+
+<style>
+  .pulse-highlight {
+    animation: pulse-border 2s infinite;
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+
+  @keyframes pulse-border {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    70% {
+      transform: scale(1.02);
+      box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+  }
+</style>
+

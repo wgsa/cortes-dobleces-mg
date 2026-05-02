@@ -1,16 +1,380 @@
 ---
+import MainLayout from '../layouts/MainLayout.astro';
+import QuoteForm from '../components/QuoteForm.astro';
 
+const trustItems = [
+  'Cotizacion tecnica en menos de 24 horas',
+  'Entregas rapidas de 48 a 72 horas',
+  'Corte de lamina hasta 6 mm',
+  'Doblado de lamina hasta 12 mm',
+  'Longitudes de trabajo hasta 3.2 m',
+];
+
+const solutions = [
+  {
+    title: 'Defensas y bigotes para carrocerias',
+    description: 'Componentes repetibles, bien terminados y listos para montaje en talleres y operaciones automotor.',
+  },
+  {
+    title: 'Tolvas, ductos y canales',
+    description: 'Desarrollos para conduccion, almacenamiento y manejo de material en entornos agroindustriales y productivos.',
+  },
+  {
+    title: 'Guardas y protecciones industriales',
+    description: 'Piezas funcionales para seguridad, reposicion y continuidad operativa en planta.',
+  },
+  {
+    title: 'Gabinetes y cajas metalicas',
+    description: 'Soluciones a medida para proteger componentes, tableros e instalaciones.',
+  },
+  {
+    title: 'Piezas metalicas bajo plano',
+    description: 'Fabricacion segun plano o referencia con revision tecnica previa para reducir errores y retrabajos.',
+  },
+  {
+    title: 'Estructuras y soportes metalicos',
+    description: 'Soportes, refuerzos y desarrollos funcionales para montaje, mantenimiento e infraestructura.',
+  },
+];
+
+const sectors = [
+  {
+    title: 'Automotor y carrocerias',
+    description: 'Fabricamos defensas, bigotes, enchapes, guardabarros y componentes metalicos para operaciones que no pueden atrasar ensamble o despacho.',
+    href: '/sectores/automotor-y-carrocerias',
+  },
+  {
+    title: 'Agroindustria',
+    description: 'Desarrollamos tolvas, ductos, cubiertas, soportes y guardas adaptadas al trabajo real de planta o campo.',
+    href: '/sectores/agroindustria',
+  },
+  {
+    title: 'Mantenimiento industrial',
+    description: 'Apoyamos reposiciones urgentes de piezas, guardas y soportes para recuperar operacion con rapidez.',
+    href: '/sectores/mantenimiento-industrial',
+  },
+  {
+    title: 'Construccion',
+    description: 'Formaletas, perfiles, canales, bajantes, cubiertas y remates con cumplimiento dimensional y tiempos claros.',
+    href: '/sectores/construccion',
+  },
+];
+
+const capabilities = [
+  {
+    title: 'Materiales de trabajo',
+    description: 'HR, Cold Rolled, Hot Rolled, acero inoxidable, aluminio y alfajor, segun el tipo de pieza y la exigencia del proyecto.',
+  },
+  {
+    title: 'Corte cizalla',
+    description: 'Corte desde calibre 24 hasta 6 mm con longitud maxima de 3 metros para piezas rectas, preparacion y desarrollos funcionales.',
+  },
+  {
+    title: 'Doblado CNC',
+    description: 'Doblado desde 1.5 mm hasta 12 mm con longitud maxima de 3.2 metros, segun material, geometria y requerimiento.',
+  },
+  {
+    title: 'Conformados frecuentes',
+    description: 'Perfiles en L, canales U, conos, transiciones, omegas, formaletas, bandejas, ductos, guardas y componentes especiales.',
+  },
+];
+
+const process = [
+  {
+    step: '01',
+    title: 'Cotizacion tecnica rapida',
+    description: 'Analizamos planos, materiales y cantidades para responder de forma clara y agil en menos de 24 horas.',
+  },
+  {
+    step: '02',
+    title: 'Validacion y optimizacion de planos',
+    description: 'Revisamos medidas, tolerancias y viabilidad para fabricar mejor desde el inicio.',
+  },
+  {
+    step: '03',
+    title: 'Produccion CNC de alta precision',
+    description: 'Llevamos el requerimiento a fabricacion con control tecnico, repetibilidad y enfoque en calidad.',
+  },
+  {
+    step: '04',
+    title: 'Entrega puntual y controlada',
+    description: 'Verificamos dimensiones y acabados para entregar lo que el cliente necesita en el tiempo acordado.',
+  },
+];
+
+const applications = [
+  {
+    title: 'Componentes para carrocerias',
+    description: 'Defensas, bigotes, enchapes, pisos y acabados metalicos para talleres y fabricantes automotor.',
+  },
+  {
+    title: 'Tolvas y ductos para agroindustria',
+    description: 'Soluciones para conduccion, almacenamiento y soporte en operaciones agroindustriales.',
+  },
+  {
+    title: 'Guardas y repuestos para mantenimiento',
+    description: 'Piezas para recuperar operacion, reforzar seguridad y reducir tiempos de parada.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'Que materiales trabajan',
+    answer: 'Trabajamos HR, Cold Rolled, Hot Rolled, acero inoxidable, aluminio y alfajor, segun el uso final de la pieza.',
+  },
+  {
+    question: 'En cuanto tiempo entregan la cotizacion',
+    answer: 'Nuestro objetivo es responder cotizaciones tecnicas en menos de 24 horas cuando el requerimiento llega con la informacion necesaria.',
+  },
+  {
+    question: 'Atienden fabricacion bajo plano',
+    answer: 'Si. Fabricamos piezas bajo plano y tambien desarrollos ajustados a necesidades especificas del cliente.',
+  },
+  {
+    question: 'Pueden ayudar con urgencias',
+    answer: 'Si. Evaluamos requerimientos urgentes, especialmente en mantenimiento industrial, reposiciones y continuidad operativa.',
+  },
+];
+const phone = import.meta.env.PUBLIC_WHATSAPP_PHONE;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout
+  title="Corte y doblado CNC en Santander | MG Cortes & Dobleces"
+  description="Fabricamos piezas metalicas a medida en Santander con corte y doblado CNC. Defensas, bigotes, tolvas, ductos, guardas y desarrollos bajo plano con cotizacion en menos de 24 horas."
+>
+  <section id="inicio" class="relative overflow-hidden pt-34 md:pt-38">
+    <div class="absolute inset-x-0 top-0 -z-10 h-[42rem] bg-[radial-gradient(circle_at_top_right,rgba(25,124,177,0.20),transparent_30%),linear-gradient(180deg,#fdfbf8_0%,#f1ece3_100%)] dark:bg-[radial-gradient(circle_at_top_right,rgba(25,124,177,0.24),transparent_25%),linear-gradient(180deg,#071624_0%,#0b1d2d_100%)]"></div>
+    <div class="section-shell grid items-center gap-14 pb-20 lg:grid-cols-[1.08fr_0.92fr] lg:pb-28 xl:gap-18">
+      <div class="space-y-9">
+        <span class="eyebrow">Cotizacion tecnica en menos de 24 horas</span>
+        <div class="space-y-6">
+          <h1 class="hero-title">
+            Corte y doblado CNC en Santander para piezas metalicas listas para producir
+          </h1>
+          <p class="hero-copy">
+            Cotizamos en menos de 24 horas y fabricamos piezas, defensas, bigotes, ductos, tolvas y desarrollos metalicos a medida con precision CNC y experiencia real de produccion, para atender rapido a empresas de automotor, agroindustria y mantenimiento industrial.
+          </p>
+        </div>
+        <div class="flex flex-col gap-4 sm:flex-row">
+          <a href="#cotizar" class="button-primary">Solicitar cotizacion</a>
+          <a href={`https://wa.me/${phone}?text=Hola%20MG,%20quiero%20cotizar%20un%20requerimiento%20metalico.`} class="button-secondary">Enviar plano por WhatsApp</a>
+        </div>
+        <p class="max-w-2xl text-[0.98rem] leading-7 text-[var(--color-text-muted)]">
+          Atendemos requerimientos en Giron, Bucaramanga y Santander con enfoque en continuidad operativa, cumplimiento y precision.
+        </p>
+      </div>
+
+      <div class="panel relative overflow-hidden p-7 sm:p-9">
+        <div class="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-[var(--color-accent-secondary)] to-transparent"></div>
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div class="rounded-[1.5rem] bg-[var(--color-brand-primary)] p-7 text-white sm:col-span-2">
+            <p class="text-sm font-semibold uppercase tracking-[0.22em] text-white/70">Triangulo de fiabilidad industrial</p>
+            <div class="mt-7 grid gap-5 md:grid-cols-3">
+              <div>
+                <p class="text-sm text-white/60">01</p>
+                <h2 class="mt-2 text-xl font-semibold">Criterio tecnico</h2>
+                <p class="mt-2 text-sm text-white/76">Revision de planos y mejor lectura del requerimiento antes de fabricar.</p>
+              </div>
+              <div>
+                <p class="text-sm text-white/60">02</p>
+                <h2 class="mt-2 text-xl font-semibold">Agilidad operativa</h2>
+                <p class="mt-2 text-sm text-white/76">Respuesta comercial rapida para compras, montajes y reposiciones urgentes.</p>
+              </div>
+              <div>
+                <p class="text-sm text-white/60">03</p>
+                <h2 class="mt-2 text-xl font-semibold">Precision CNC</h2>
+                <p class="mt-2 text-sm text-white/76">Piezas orientadas a repetibilidad, montaje y cumplimiento dimensional.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="surface-card rounded-[1.5rem] border border-[var(--color-border)] bg-[var(--color-bg-secondary)] p-6">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-brand-secondary)]">Mercado principal</p>
+            <h2 class="mt-3 text-2xl font-semibold text-[var(--color-brand-primary)]">Automotor y carrocerias</h2>
+            <p class="mt-3 text-sm text-[var(--color-text-muted)]">Defensas, bigotes, enchapes, guardabarros y piezas con repetibilidad para talleres y fabricantes.</p>
+          </div>
+
+          <div class="surface-card rounded-[1.5rem] border border-[var(--color-border)] bg-[var(--color-bg-secondary)] p-6">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-brand-secondary)]">Respuesta operativa</p>
+            <h2 class="mt-3 text-2xl font-semibold text-[var(--color-brand-primary)]">Urgencias y continuidad</h2>
+            <p class="mt-3 text-sm text-[var(--color-text-muted)]">Atencion a reposiciones, guardas, soportes y piezas que no pueden esperar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-10 md:pb-14">
+    <div class="section-shell">
+      <div class="panel grid gap-4 p-6 md:grid-cols-5 md:p-8">
+        {trustItems.map((item) => (
+          <div class="surface-card rounded-[1.25rem] border border-[var(--color-border)] p-4 text-center text-sm font-semibold text-[var(--color-brand-primary)] dark:bg-white/4">
+            {item}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="soluciones" class="py-24 md:py-28">
+    <div class="section-shell space-y-10">
+      <div class="space-y-5">
+        <span class="eyebrow">Soluciones reales</span>
+        <h2 class="section-title">Fabricamos soluciones metalicas que responden a necesidades reales de la region</h2>
+        <p class="section-copy">
+          No solo cortamos y doblamos lamina. Fabricamos piezas y desarrollos que responden a necesidades concretas de carrocerias, agroindustria, mantenimiento industrial y construccion.
+        </p>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {solutions.map((solution) => (
+          <article class="panel flex h-full flex-col justify-between p-7">
+            <div class="space-y-4">
+              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-brand-secondary)]">MG fabrica</p>
+              <h3 class="text-2xl font-semibold text-[var(--color-brand-primary)]">{solution.title}</h3>
+              <p class="text-sm text-[var(--color-text-muted)]">{solution.description}</p>
+            </div>
+            <a href="#cotizar" class="mt-6 text-sm font-semibold text-[var(--color-brand-primary)]">Cotizar esta solucion</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="sectores" class="py-24 md:py-28">
+    <div class="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <div class="space-y-5">
+        <span class="eyebrow">Sectores que atendemos</span>
+        <h2 class="section-title">Atendemos sectores donde la precision y el tiempo de respuesta si hacen diferencia</h2>
+        <p class="section-copy">
+          Adaptamos cada fabricacion al contexto real del cliente, su operacion y el tipo de exigencia tecnica del trabajo.
+        </p>
+      </div>
+      <div class="grid gap-5 md:grid-cols-2">
+        {sectors.map((sector) => (
+          <a href={sector.href} class="panel group p-6 transition duration-300 hover:-translate-y-1 hover:border-[var(--color-brand-secondary)]">
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-brand-secondary)]">Sector</p>
+            <h3 class="mt-4 text-2xl font-semibold text-[var(--color-brand-primary)]">{sector.title}</h3>
+            <p class="mt-3 text-sm text-[var(--color-text-muted)]">{sector.description}</p>
+            <span class="mt-5 inline-flex text-sm font-semibold text-[var(--color-brand-primary)]">Ver enfoque del sector</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="capacidades" class="py-24 md:py-28">
+    <div class="section-shell space-y-10">
+      <div class="space-y-5">
+        <span class="eyebrow">Capacidades tecnicas</span>
+        <h2 class="section-title">Capacidades reales para fabricar con criterio, rapidez y precision</h2>
+        <p class="section-copy">
+          Estas son las capacidades base con las que atendemos proyectos de fabricacion metalica a medida en Santander.
+        </p>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2">
+        {capabilities.map((capability) => (
+          <article class="panel p-7">
+            <h3 class="text-2xl font-semibold text-[var(--color-brand-primary)]">{capability.title}</h3>
+            <p class="mt-4 text-sm text-[var(--color-text-muted)]">{capability.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="proceso" class="py-24 md:py-28">
+    <div class="section-shell space-y-10">
+      <div class="space-y-5">
+        <span class="eyebrow">Proceso de trabajo</span>
+        <h2 class="section-title">Un proceso pensado para reducir errores, acelerar respuesta y entregar con control</h2>
+      </div>
+      <div class="grid gap-6 xl:grid-cols-4">
+        {process.map((item) => (
+          <article class="panel relative p-7">
+            <span class="text-sm font-semibold uppercase tracking-[0.22em] text-[var(--color-brand-secondary)]">{item.step}</span>
+            <h3 class="mt-4 text-2xl font-semibold text-[var(--color-brand-primary)]">{item.title}</h3>
+            <p class="mt-4 text-sm text-[var(--color-text-muted)]">{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 md:py-28">
+    <div class="section-shell">
+      <div class="overflow-hidden rounded-[2rem] bg-[var(--color-brand-primary)] px-7 py-10 text-white md:px-10 md:py-12">
+        <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div class="space-y-4">
+            <span class="inline-flex rounded-full border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white/72">Urgencias industriales</span>
+            <h2 class="text-3xl font-semibold leading-tight md:text-5xl">Necesitas una pieza o reposicion urgente para no detener tu operacion</h2>
+            <p class="max-w-3xl text-sm leading-7 text-white/76 md:text-base">
+              Si tienes un paro de produccion, una guarda danada, un soporte critico o una pieza que debes reponer rapido, podemos ayudarte a evaluar el requerimiento y responder con agilidad.
+            </p>
+          </div>
+          <a href="https://wa.me/573177617494?text=Hola%20MG,%20tengo%20un%20requerimiento%20urgente%20de%20fabricacion." class="button-secondary border-white/30 bg-white/8 text-white hover:bg-white/16">
+            Enviar requerimiento urgente
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 md:py-28">
+    <div class="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <div class="space-y-5">
+        <span class="eyebrow">Aplicaciones destacadas</span>
+        <h2 class="section-title">Aplicaciones reales que podemos fabricar segun tu necesidad</h2>
+        <p class="section-copy">
+          Trabajamos sobre requerimientos concretos, segun plano, material, espesor y uso final.
+        </p>
+      </div>
+      <div class="grid gap-5">
+        {applications.map((application) => (
+          <article class="panel p-7">
+            <h3 class="text-2xl font-semibold text-[var(--color-brand-primary)]">{application.title}</h3>
+            <p class="mt-4 text-sm text-[var(--color-text-muted)]">{application.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <QuoteForm />
+
+  <section class="py-24 md:py-28">
+    <div class="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <div class="space-y-5">
+        <span class="eyebrow">Preguntas frecuentes</span>
+        <h2 class="section-title">Resolvemos dudas antes de que tu proyecto se detenga</h2>
+      </div>
+      <div class="grid gap-5">
+        {faqs.map((faq) => (
+          <details class="panel p-6">
+            <summary class="cursor-pointer list-none text-lg font-semibold text-[var(--color-brand-primary)]">{faq.question}</summary>
+            <p class="mt-4 text-sm text-[var(--color-text-muted)]">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-24 md:pb-28">
+    <div class="section-shell">
+      <div class="overflow-hidden rounded-[2rem] border border-[var(--color-border)] bg-[var(--color-brand-panel)] px-7 py-10 md:px-10 md:py-12 dark:bg-[var(--color-surface-strong)]">
+        <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div class="space-y-4">
+            <span class="eyebrow border-transparent bg-white/70 dark:bg-white/6">Siguiente paso</span>
+            <h2 class="text-3xl font-semibold leading-tight text-[var(--color-brand-primary)] md:text-5xl">Si ya tienes el plano o la necesidad clara, el siguiente paso es cotizar</h2>
+            <p class="max-w-3xl text-sm leading-7 text-[var(--color-text-muted)] md:text-base">
+              Hablemos de tu requerimiento y revisemos la mejor forma de fabricarlo con rapidez, precision y criterio tecnico.
+            </p>
+          </div>
+          <div class="flex flex-col gap-3">
+            <a href="#cotizar" class="button-primary">Solicitar cotizacion</a>
+            <a href={`https://wa.me/${phone}?text=Hola%20MG,%20quiero%20enviar%20mi%20plano%20para%20cotizacion.`} class="button-secondary">Enviar plano por WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

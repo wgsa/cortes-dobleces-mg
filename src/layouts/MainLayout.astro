@@ -1,0 +1,112 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.jsx';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+
+interface Props {
+	title: string;
+	description?: string;
+    image?: string;
+}
+
+const {
+	title,
+	description = 'Fabricamos piezas metalicas a medida en Santander con corte y doblado CNC. Defensas, bigotes, tolvas, ductos, guardas y desarrollos bajo plano.',
+    image = '/og-image.jpg',
+} = Astro.props;
+
+const phone = import.meta.env.PUBLIC_WHATSAPP_PHONE;
+const siteUrl = import.meta.env.PUBLIC_SITE_URL;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Cortes y Dobles MG SAS",
+  "image": `${siteUrl}/logo.png`,
+  "url": siteUrl,
+  "telephone": `+${phone}`,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Zona Industrial",
+    "addressLocality": "Girón",
+    "addressRegion": "Santander",
+    "addressCountry": "CO"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 7.067,
+    "longitude": -73.167
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "opens": "07:00",
+    "closes": "17:30"
+  },
+  "sameAs": [
+    "https://www.facebook.com/cortesydoblecesmg",
+    "https://www.instagram.com/cortesydoblecesmg"
+  ]
+};
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+
+        <!-- SEO Meta Tags -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+        <link rel="canonical" href={Astro.url} />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={Astro.url} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={new URL(image, Astro.url)} />
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={Astro.url} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+        <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+    <script is:inline>
+      if (
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+	</head>
+	<body>
+        <Navbar client:load />
+		<slot />
+        <Footer />
+        <WhatsAppFloat />
+	</body>
+</html>
